@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: True
+    ignore-error: True
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: testrole-centos7 
+    image: centos:7
+    pre_build_image: True
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  enabled: True
+  lint:
+    name: flake8 

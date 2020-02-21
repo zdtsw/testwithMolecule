@@ -1,0 +1,9 @@
+#run before playbook.yml for any one-time pre-config if needed
+#
+---
+- name: Customized prepare 
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Just placeholder
+      shell: date

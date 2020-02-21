@@ -1,0 +1,7 @@
+- name: test
+  shell: uname 
+  register: king
+  changed_when: false
+
+- debug:
+    msg: "Hejsan! :{{ king }}"
