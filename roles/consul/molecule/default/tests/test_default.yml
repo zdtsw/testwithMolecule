@@ -1,0 +1,37 @@
+---
+package:
+  filebeat:
+    installed: true
+    versions:
+      - {{ filebeat_version }}
+  sensu-client:
+    installed: true
+    versions:
+      - {{ sensu-client_version }} 
+  crontb:
+    installed: true
+  consul:
+    installed: true
+    versions:
+      - {{ consul.version }}
+  nginx:
+    installed: true
+    version:
+      - {{ nginx.version }}
+
+service:
+  consul: 
+    enabled: true 
+    running: true
+  nginx:
+    enabled: true
+    running: running
+
+
+port:
+  tcp: 8500
+    listening: true
+
+http:
+  http://localhost:{{ sensu_http_port }}/ui/dc1/services:
+    status: 200

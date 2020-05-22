@@ -1,0 +1,6 @@
+[consul]
+consul.mycompany.com
+
+[test_consul]
+test-consul.mycompany.com
+

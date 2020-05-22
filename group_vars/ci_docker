@@ -1,0 +1,10 @@
+---
+sensu:
+  custom:
+    - { file: 'check-http.rb',  owner: 'root', group: 'root', mode: '0775' }
+  custom_json:
+    - http
+
+## Varaibles for Custom Sensu Client Checks
+sensu_http_url: "http://localhost/ui/dc1/services"
+sensu_http_port: 80

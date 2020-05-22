@@ -1,0 +1,6 @@
+---
+proxy_env:
+  http_proxy: http://proxy.mycompany.com
+  https_proxy: http://proxy.mycompany.com
+  no_proxy: .mycompany.com,localhost,127.0.0.1
+load_check_cpu_modifier: 2

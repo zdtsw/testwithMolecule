@@ -1,0 +1,2 @@
+[ci_docker]
+CI_CONTAINER_NAME ansible_connection=docker

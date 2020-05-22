@@ -1,0 +1,40 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: docker-local-test-consul
+    image: nexus.mycompany.com:18444/iac/docker-centos7-ansible:1.0.12
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    # - prepare
+    - converge
+    - idempotence
+    #- side_effect
+    - verify
+    - destroy
+verifier:
+  name: testinfra 
+  enabled: true
+  lint:
+    name: yamllint

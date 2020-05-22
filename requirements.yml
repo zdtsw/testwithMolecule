@@ -1,0 +1,20 @@
+- src: ssh://git@gitlab.mycompany.com:7999/iac/ansible-yum-repo.git
+  scm: git
+  name: yum-repo
+  version: "1.0.20"
+
+- src: ssh://git@gitlab.mycompany.com:7999/iac/ansible-sensu-client.git
+  scm: git
+  name: sensu-client
+  version: "1.0.4"
+
+- src: ssh://git@gitlab.mycompany.com:7999/iac/ansible-filebeat.git
+  scm: git
+  name: filebeat
+  version: "1.0.3"
+
+- src: ssh://git@gitlab.mycompany.com:7999/iac/ansible-nginx.git
+  scm: git
+  name: nginx
+  version: "1.0.1"
+

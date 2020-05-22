@@ -1,0 +1,2 @@
+[local]
+docker-local-test-consul ansible_connection=docker

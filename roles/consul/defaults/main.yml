@@ -1,0 +1,13 @@
+---
+sensu-client_version: 1.0.3
+
+filebeat_version: 6.2.2
+
+consul:
+  version: '2.1.1'
+  dependencies:
+    - cronie
+
+nginxconfs: 'consul.conf'
+nginx:
+  version: nginx-1.16.1-1.el7

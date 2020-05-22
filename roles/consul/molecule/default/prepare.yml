@@ -1,4 +1,4 @@
-#run before playbook.yml for any one-time pre-config if needed
+#run before converge.yml for any one-time pre-config if needed
 #
 ---
 - name: Customized prepare 

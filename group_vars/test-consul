@@ -1,0 +1,26 @@
+---
+sensu:
+  custom:
+    - { file: 'check-http.rb',  owner: 'root', group: 'root', mode: '0775' }
+  custom_json:
+    - http
+
+## Varaibles for Custom Sensu Client Checks
+sensu_http_url: "http://test-onsul.mycompany.com/ui/dc1/services"
+sensu_http_port: 80
+
+## Varaibles for Standard Sensu Client Checks
+sensu_system: consul
+
+sensu_inode_criticalvalue: 90
+sensu_inode_partition: /
+sensu_process_name: consul
+sensu_memory_warningvalue: 10
+sensu_memory_criticalvalue: 5
+sensu_memory_occurrences: 3
+sensu_disk_criticalvalue: 98
+sensu_disk_warningvalue: 95
+sensu_totalprocs_occurrences: 3
+sensu_totalprocs_warning: 320
+sensu_totalprocs_critical: 350
+

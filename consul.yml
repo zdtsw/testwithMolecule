@@ -1,0 +1,5 @@
+---
+- hosts: "{{ dest_hosts }}"
+  serial: 1
+  roles:
+    - consul 

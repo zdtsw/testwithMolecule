@@ -1,0 +1,13 @@
+---
+- type: log
+  enabled: true
+  paths:
+    - /var/log/messages
+  fileds:
+    host: {{ ansible_hostname }}
+    system: {{ role_path|basename }}
+    enviroment: mgmt
+  fields_under_root: true
+  ignore_older: 12h
+  scan_frequency: 30s
+  backoff: 1s
