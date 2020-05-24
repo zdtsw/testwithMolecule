@@ -1,7 +1,0 @@
----
-## Varaibles for Custom Sensu Client Checks
-sensu_http_url: "http://localhost/ui/dc1/services"
-sensu_http_port: 80
-
-## Varaibles for Standard Sensu Client Checks
-sensu_system: consul

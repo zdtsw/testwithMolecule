@@ -6,5 +6,5 @@ sensu:
     - http
 
 ## Varaibles for Custom Sensu Client Checks
-sensu_http_url: "http://localhost/ui/dc1/services"
+sensu_http_url: "http://CI_CONTAINER_NAME/ui/dc1/services"
 sensu_http_port: 80

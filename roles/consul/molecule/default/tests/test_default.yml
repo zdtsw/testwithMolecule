@@ -1,4 +1,5 @@
 ---
+#This file is not in use, was for goss
 package:
   filebeat:
     installed: true
