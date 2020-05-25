@@ -1,11 +1,37 @@
 ---
-#Setup yum files
 - include_role: name=yum-repo
 
-- name: Install consul
+- name: Install dependencies
+  yum: name={{ item }} state=present
+  loop: "{{ consul.dependencies }}"
+
+
+
+- block:
+  - name: Stop consul
+    service: name=consul state=stopped
+
+  - name: check old db exists
+    stat: path=/var/bin/consul
+    register: dbpath
+
+  - name: get stopped consul version
+    command: "consul -v"
+    register: oldversion
+
+  - name: backup old database folder
+    command: "cp /var/bin/consul /var/bin/consul_{{ oldversion }}"
+    when: dbpath.stat.exists
+
+  - name: move backup file to backup db folder
+    command: "mv /etc/consul/backup.snap /var/bin/consul_{{ oldversion }}"
+
+  when: ansible_facts.packages['consul'][0].version is defined
+
+- name: "install consul new version {{ consul.version }}"
   yum: name=consul-{{ consul.version }} state=present
 
-- name: create link
+- name: create link for server only in our setup
   file:
     src: /etc/consul/server.json
     dest: /etc/consul/config.json
@@ -17,18 +43,8 @@
     regexp: '"advertise_addr" : "IP",'
     replace: '"advertise_addr" : "{{ ansible_default_ipv4.address }}",'
 
-- name: overwrite startup option
-  file:
-    dest: "/etc/sysconfig/consul"
-    src: "consul"
-    owner: root
-    group: root
-    mode: 0644
-
 - name: Check consul running
   service: name=consul state=started enabled=true
-
-- include_role: name=nginx
 
 - name: Creates a cron file under /etc/cron.d to backup db
   cron:
@@ -39,7 +55,6 @@
     user: root
     job: "consul snapshot save /etc/consul/backup.snap"
 
-
+- include_role: name=nginx
 - include_role: name=sensu-client
-
 - include_role: name=filebeat
