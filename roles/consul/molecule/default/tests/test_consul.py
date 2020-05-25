@@ -27,7 +27,7 @@ def test_consul_installed_running(host):
 
 def test_consul_upgrade_version(host):
     v = host.check_output("consul -v")
-    assert re.match("2.1.1", v)
+    assert re.match("Consul v2.1.1", v)
 
 
 def test_consul_is_open(host):
