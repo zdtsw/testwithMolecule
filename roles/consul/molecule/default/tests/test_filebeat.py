@@ -1,4 +1,5 @@
 import os
+import re
 
 import testinfra.utils.ansible_runner
 
@@ -10,9 +11,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_filebeat_running_enabled(host):
     assert host.service("filebeat").is_enabled is True
     assert host.service("filebeat").is_running
-
-
-
 
 def test_filebeat_version(host):
     v = host.check_output("filebeat -v")

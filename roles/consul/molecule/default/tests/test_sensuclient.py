@@ -1,4 +1,5 @@
 import os
+import rc
 
 import testinfra.utils.ansible_runner
 
@@ -15,4 +16,3 @@ def test_sensuclient_running_enabled(host):
 def test_sensuclient_version(host):
     v = host.check_output("sensu-client -v")
     assert re.match(".*1.0.3.*", v)
-
